@@ -1,7 +1,9 @@
 package com.example.listviewalumnos;
-import com.example.listviewalumnos.R;
+
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,23 +13,45 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private ArrayList<AlumnoItem> alumnoItems;
+    private ArrayList<AlumnoItem> allAlumnoItems; // Lista de todos los elementos sin filtrar
+    private AdapterAlumno adapter;
+    private ListView listView;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListView listView = findViewById(R.id.listView);
+        listView = findViewById(R.id.listView);
+        searchView = findViewById(R.id.searchView);
+
         alumnoItems = new ArrayList<>();
+        allAlumnoItems = new ArrayList<>(); // Inicializar lista de todos los elementos
 
         fillAlumnos();
 
-        AdapterAlumno adapter = new AdapterAlumno(this, alumnoItems);
+        allAlumnoItems.addAll(alumnoItems); // Agregar todos los elementos a la lista sin filtrar
+
+        adapter = new AdapterAlumno(this, alumnoItems);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener((parent, view, position, id) -> {
             AlumnoItem alumnoItem = alumnoItems.get(position);
             Toast.makeText(MainActivity.this, "Seleccionado: " + alumnoItem.getNombre(), Toast.LENGTH_SHORT).show();
+        });
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterAlumnos(newText);
+                return true;
+            }
         });
     }
 
@@ -64,5 +88,26 @@ public class MainActivity extends AppCompatActivity {
         alumnoItems.add(new AlumnoItem(R.drawable.a2020030268, getResources().getString(R.string.alumno30_nombre), getResources().getString(R.string.alumno30_matricula)));
         alumnoItems.add(new AlumnoItem(R.drawable.a2020030292, getResources().getString(R.string.alumno31_nombre), getResources().getString(R.string.alumno31_matricula)));
         alumnoItems.add(new AlumnoItem(R.drawable.a2020030304, getResources().getString(R.string.alumno32_nombre), getResources().getString(R.string.alumno32_matricula)));
+    }
+
+    private void filterAlumnos(String query) {
+        ArrayList<AlumnoItem> filteredList = new ArrayList<>();
+
+        if (TextUtils.isEmpty(query)) {
+            filteredList.addAll(allAlumnoItems); // Mostrar todos los elementos si el texto de búsqueda está vacío
+        } else {
+            String searchQuery = query.toLowerCase().trim();
+
+            for (AlumnoItem alumno : allAlumnoItems) {
+                if (alumno.getNombre().toLowerCase().contains(searchQuery)
+                        || alumno.getMatricula().toLowerCase().contains(searchQuery)) {
+                    filteredList.add(alumno);
+                }
+            }
+        }
+
+        alumnoItems.clear(); // Limpiar la lista actual
+        alumnoItems.addAll(filteredList); // Agregar los elementos filtrados
+        adapter.notifyDataSetChanged();
     }
 }
