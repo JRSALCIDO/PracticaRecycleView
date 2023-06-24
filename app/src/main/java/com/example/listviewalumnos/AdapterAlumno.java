@@ -14,8 +14,8 @@ import java.util.ArrayList;
 
 public class AdapterAlumno extends ArrayAdapter<AlumnoItem> {
 
-    private Context mContext;
-    private ArrayList<AlumnoItem> mAlumnoItems;
+    private final Context mContext;
+    private final ArrayList<AlumnoItem> mAlumnoItems;
 
     public AdapterAlumno(@NonNull Context context, ArrayList<AlumnoItem> list) {
         super(context, 0, list);
@@ -34,9 +34,7 @@ public class AdapterAlumno extends ArrayAdapter<AlumnoItem> {
         AlumnoItem currentAlumnoItem = mAlumnoItems.get(position);
 
         ImageView image = listItem.findViewById(R.id.image_alumno);
-        String imageName = currentAlumnoItem.getMatricula();
-        int resID = mContext.getResources().getIdentifier(imageName, "drawable", mContext.getPackageName());
-        image.setImageResource(resID);
+        image.setImageResource(currentAlumnoItem.getImagenID()); // Usamos el nuevo método getImagenID()
 
         TextView name = listItem.findViewById(R.id.nombre_alumno);
         name.setText(currentAlumnoItem.getNombre());

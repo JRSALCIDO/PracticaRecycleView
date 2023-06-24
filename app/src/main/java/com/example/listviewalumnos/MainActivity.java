@@ -1,17 +1,15 @@
 package com.example.listviewalumnos;
-
+import com.example.listviewalumnos.R;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ListView listView;
-    private AdapterAlumno adapter;
     private ArrayList<AlumnoItem> alumnoItems;
 
     @Override
@@ -19,20 +17,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listView = findViewById(R.id.listView);
+        ListView listView = findViewById(R.id.listView);
         alumnoItems = new ArrayList<>();
 
         fillAlumnos();
 
-        adapter = new AdapterAlumno(this, alumnoItems);
+        AdapterAlumno adapter = new AdapterAlumno(this, alumnoItems);
         listView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                AlumnoItem alumnoItem = alumnoItems.get(position);
-                Toast.makeText(MainActivity.this, "Seleccionado: " + alumnoItem.getNombre(), Toast.LENGTH_SHORT).show();
-            }
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            AlumnoItem alumnoItem = alumnoItems.get(position);
+            Toast.makeText(MainActivity.this, "Seleccionado: " + alumnoItem.getNombre(), Toast.LENGTH_SHORT).show();
         });
     }
 
