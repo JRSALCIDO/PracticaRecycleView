@@ -1,3 +1,100 @@
 <resources>
-    <string name="app_name">ListviewAlumnos</string>
+    <string name="app_name">Listview personalizado</string>
+
+    <string name="alumno1_nombre">ARIAS ZATARAIN DIEGO</string>
+    <string name="alumno1_matricula">2020030306</string>
+
+    <string name="alumno2_nombre">VALDEZ MARTINEZ PAOLA EMIRET</string>
+    <string name="alumno2_matricula">2020030313</string>
+
+    <string name="alumno3_nombre">IBARRA FLORES SALMA YARETH</string>
+    <string name="alumno3_matricula">2020030315</string>
+
+    <string name="alumno4_nombre">LIZARRAGA MALDONADO JUAN ANTONIO</string>
+    <string name="alumno4_matricula">2020030322</string>
+
+    <string name="alumno5_nombre">VIERA ROMERO ANGEL ZINEDINE ANASTACIO</string>
+    <string name="alumno5_matricula">2020030325</string>
+
+    <string name="alumno6_nombre">TEJEDA PEINADO BLAS ALBERTO</string>
+    <string name="alumno6_matricula">2020030327</string>
+
+    <string name="alumno7_nombre">VIERA ROMERO ANGEL RONALDO ANASTACIO</string>
+    <string name="alumno7_matricula">2020030329</string>
+
+    <string name="alumno8_nombre">ELIZALDE VARGAS XIOMARA YAMILETH</string>
+    <string name="alumno8_matricula">2020030332</string>
+
+    <string name="alumno9_nombre">SALCIDO SARABIA JESUS ANTONIO</string>
+    <string name="alumno9_matricula">2020030333</string>
+
+    <string name="alumno10_nombre">RODRIGUEZ SANCHEZ YENNIFER CAROLINA</string>
+    <string name="alumno10_matricula">2020030389</string>
+
+    <string name="alumno11_nombre">FLORES PRADO MANUEL ALEXIS</string>
+    <string name="alumno11_matricula">2020030766</string>
+
+    <string name="alumno12_nombre">AGUIRRE TOSTADO VICTOR MOISES</string>
+    <string name="alumno12_matricula">2020030771</string>
+
+    <string name="alumno13_nombre">DOMINGUEZ SARABIA HALACH UINIC</string>
+    <string name="alumno13_matricula">2020030777</string>
+
+    <string name="alumno14_nombre">MACIEL NUÑEZ ENZO ALEJANDRO</string>
+    <string name="alumno14_matricula">2020030799</string>
+
+    <string name="alumno15_nombre">BARRON VARGAS JOSE ALBERTO</string>
+    <string name="alumno15_matricula">2020030808</string>
+
+    <string name="alumno16_nombre">MARTIN IBARRA GIANCARLO</string>
+    <string name="alumno16_matricula">2020030819</string>
+
+    <string name="alumno17_nombre">SANCHEZ OCEGUEDA LUIS ANGEL</string>
+    <string name="alumno17_matricula">2020030865</string>
+
+    <string name="alumno18_nombre">MORUA ZAMUDIO ESTEFANO</string>
+    <string name="alumno18_matricula">2019030344</string>
+
+    <string name="alumno19_nombre">CARRANZA JAUREGUI CARLOS ALBERTO</string>
+    <string name="alumno19_matricula">2020030174</string>
+
+    <string name="alumno20_nombre">CASTRO LOPEZ MARCO ANTONIO ALARID</string>
+    <string name="alumno20_matricula">2020030176</string>
+
+    <string name="alumno21_nombre">DURAN VALDEZ JOSHUA DANIEL</string>
+    <string name="alumno21_matricula">2020030181</string>
+
+    <string name="alumno22_nombre">GALINDO HERNANDEZ ERNESTO DAVID</string>
+    <string name="alumno22_matricula">2020030184</string>
+
+    <string name="alumno23_nombre">CONTRERAS CEPEDA MAXIMILIANO</string>
+    <string name="alumno23_matricula">2020030189</string>
+
+    <string name="alumno24_nombre">GOMEZ RUELAS IVÁN ENRIQUE</string>
+    <string name="alumno24_matricula">2020030199</string>
+
+    <string name="alumno25_nombre">CRUZ QUINTERO JESUS EDUARDO</string>
+    <string name="alumno25_matricula">2020030212</string>
+
+    <string name="alumno26_nombre">VELARDE OVALLE DAVID ANTONIO</string>
+    <string name="alumno26_matricula">2020030241</string>
+
+    <string name="alumno27_nombre">LAMAS ARMENTA GUSTAVO ADOLFO</string>
+    <string name="alumno27_matricula">2020030243</string>
+
+    <string name="alumno28_nombre">RIVAS LUGO JUAN CARLOS</string>
+    <string name="alumno28_matricula">2020030249</string>
+
+    <string name="alumno29_nombre">SALAS MENDOZA ALEJO</string>
+    <string name="alumno29_matricula">2020030264</string>
+
+    <string name="alumno30_nombre">SERRANO TORRES CARLOS JAIR</string>
+    <string name="alumno30_matricula">2020030268</string>
+
+    <string name="alumno31_nombre">TIRADO ROMERO JESUS TADEO</string>
+    <string name="alumno31_matricula">2020030292</string>
+
+    <string name="alumno32_nombre">CARRILLO GARCIA JAIR</string>
+    <string name="alumno32_matricula">2020030304</string>
 </resources>
+
