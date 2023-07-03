@@ -2,112 +2,45 @@ package com.example.listviewalumnos;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<AlumnoItem> alumnoItems;
-    private ArrayList<AlumnoItem> allAlumnoItems; // Lista de todos los elementos sin filtrar
-    private AdapterAlumno adapter;
-    private ListView listView;
-    private SearchView searchView;
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listView = findViewById(R.id.listView);
-        searchView = findViewById(R.id.searchView);
+        Aplicacion app = (Aplicacion) getApplication();
+        recyclerView = (RecyclerView) findViewById(R.id.recId);
+        recyclerView.setAdapter(app.getAdaptador());
 
-        alumnoItems = new ArrayList<>();
-        allAlumnoItems = new ArrayList<>(); // Inicializar lista de todos los elementos
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
 
-        fillAlumnos();
 
-        allAlumnoItems.addAll(alumnoItems); // Agregar todos los elementos a la lista sin filtrar
-
-        adapter = new AdapterAlumno(this, alumnoItems);
-        listView.setAdapter(adapter);
-
-        listView.setOnItemClickListener((parent, view, position, id) -> {
-            AlumnoItem alumnoItem = alumnoItems.get(position);
-            Toast.makeText(MainActivity.this, "Seleccionado: " + alumnoItem.getNombre(), Toast.LENGTH_SHORT).show();
-        });
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        app.getAdaptador().setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                filterAlumnos(newText);
-                return true;
-            }
-        });
-    }
-
-    private void fillAlumnos() {
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-        alumnoItems.add(new AlumnoItem());
-    }
-
-    private void filterAlumnos(String query) {
-        ArrayList<AlumnoItem> filteredList = new ArrayList<>();
-
-        if (TextUtils.isEmpty(query)) {
-            filteredList.addAll(allAlumnoItems); // Mostrar todos los elementos si el texto de búsqueda está vacío
-        } else {
-            String searchQuery = query.toLowerCase().trim();
-
-            for (AlumnoItem alumno : allAlumnoItems) {
-                if (alumno.getNombre().toLowerCase().contains(searchQuery)
-                        || alumno.getMatricula().toLowerCase().contains(searchQuery)) {
-                    filteredList.add(alumno);
+            public void onClick(View v) {
+                    int posicion = recyclerView.getChildAdapterPosition(v);
+                    String dato = app.getAlumnos().get(posicion).getNombre();
+                    Toast.makeText(MainActivity.this, "Se hizo click en " + dato, Toast.LENGTH_LONG).show();
                 }
-            }
-        }
-
-        alumnoItems.clear(); // Limpiar la lista actual
-        alumnoItems.addAll(filteredList); // Agregar los elementos filtrados
-        adapter.notifyDataSetChanged();
+        });
     }
+
 }

@@ -1,7 +1,5 @@
 package Modelo;
 
-import com.example.listviewalumnos.AlumnoItem;
-
 public interface Persistencia {
     public void openDataBase();
     public void closeDataBase();

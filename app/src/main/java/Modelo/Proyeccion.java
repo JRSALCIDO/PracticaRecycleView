@@ -2,8 +2,6 @@ package Modelo;
 
 import android.database.Cursor;
 
-import com.example.listviewalumnos.AlumnoItem;
-
 import java.util.ArrayList;
 
 public interface Proyeccion {
