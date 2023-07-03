@@ -9,6 +9,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Listado de Alumnos"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_marginBottom="20dp">
+        </TextView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recId">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
         <SearchView
             android:id="@+id/searchView"
