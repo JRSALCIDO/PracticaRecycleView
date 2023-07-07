@@ -3,24 +3,44 @@ package com.example.listviewalumnos;
 import android.app.Application;
 import android.util.Log;
 
-import java.util.AbstractCollection;
 import java.util.ArrayList;
 
-public class Aplicacion extends Application {
-    public static ArrayList<Alumno> alumnos;
+import Modelo.AlumnoDbHelper;
+import Modelo.AlumnosDb;
 
+public class Aplicacion extends Application {
+
+    public static ArrayList<Alumno> alumnos;
     private MiAdaptador adaptador;
 
-    public ArrayList<Alumno> getAlumnos(){ return alumnos; }
+    private AlumnosDb alumnosDb;
 
-    public MiAdaptador getAdaptador(){ return adaptador; }
 
-    @Override
-    public void onCreate(){
-        super.onCreate();
-        alumnos = Alumno.llenarAlumnos();
-        adaptador = new MiAdaptador(alumnos, this);
-        Log.d("", "onCreate: tamaño array list " + alumnos.size());
+
+    public  ArrayList<Alumno> getAlumnos() {
+
+        return alumnos;
     }
 
+    public MiAdaptador getAdaptor() {
+
+        return adaptador;
+    }
+
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+
+
+
+        alumnosDb= new AlumnosDb(getApplicationContext());
+        // alumnos =Alumno.llenarAlumnos();
+        alumnos = alumnosDb.allAlumnos();
+        alumnosDb.openDataBase();
+
+        adaptador=new MiAdaptador(alumnos,this);
+        Log.d("", "onCreate: tamaño array list" + alumnos.size());
+    }
 }

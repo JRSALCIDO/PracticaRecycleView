@@ -3,9 +3,14 @@ package Modelo;
 import com.example.listviewalumnos.Alumno;
 
 public interface Persistencia {
-    void openDataBase();
-    void closeDataBase();
+
+
+    public void openDataBase();
+    public void closeDataBase();
+    public long updateALumno (Alumno alumno);
+
     long insertAlumno(Alumno alumno);
-    long updateAlumno(Alumno alumno);
-    long deleteAlumno(int id);
+
+    public void deleteAlumnos (int id);
+
 }

@@ -80,6 +80,13 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="Eliminar"
+                    android:id="@+id/btnBorrar"
+                    android:layout_span="2">
+                </Button>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="Regresar"
                     android:id="@+id/btnRegresar"
                     android:layout_span="2">

@@ -14,37 +14,41 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.ViewHolder> implements View.OnClickListener{
+public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.ViewHolder> implements View.OnClickListener {
     protected ArrayList<Alumno> listaAlumnos;
     private View.OnClickListener listener;
     private Context context;
     private LayoutInflater inflater;
 
-    public MiAdaptador(ArrayList<Alumno> listaAlumnos, Context context){
+    public MiAdaptador(ArrayList<Alumno> listaAlumnos, Context  context){
         this.listaAlumnos = listaAlumnos;
         this.context = context;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
     }
 
-    @NotNull
+
     @NonNull
+    @NotNull
     @Override
-    public MiAdaptador.ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.alumnos_items, null);
+    public ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+        View view = inflater.inflate(R.layout.alumnos_items,null, false);
         view.setOnClickListener(this);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull MiAdaptador.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
         Alumno alumno = listaAlumnos.get(position);
         holder.txtMatricula.setText(alumno.getMatricula());
         holder.txtNombre.setText(alumno.getNombre());
         holder.idImagen.setImageResource(alumno.getImg());
+        holder.txtCarrera.setText(alumno.getGrado());
+
     }
 
     @Override
-    public int getItemCount() {
+    public int getItemCount(){
         return listaAlumnos.size();
     }
 
@@ -52,10 +56,13 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.ViewHolder> im
         this.listener = listener;
     }
 
+
+
     @Override
     public void onClick(View v) {
-        if(listener !=null) listener.onClick(v);
+        if(listener != null) listener.onClick(v);
     }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private LayoutInflater inflater;
@@ -67,11 +74,13 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.ViewHolder> im
 
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-            txtNombre = (TextView) itemView.findViewById((R.id.txtAlumnoNombre));
-            txtMatricula = (TextView) itemView.findViewById((R.id.txtMatricula));
-            txtCarrera = (TextView) itemView.findViewById((R.id.txtCarrera));
+            txtNombre = (TextView) itemView.findViewById(R.id.txtAlumnoNombre);
+            txtMatricula = (TextView) itemView.findViewById(R.id.txtMatricula);
+            txtCarrera = (TextView)  itemView.findViewById(R.id.txtCarrera);
+
 
             idImagen = (ImageView) itemView.findViewById((R.id.foto));
+
         }
     }
 }

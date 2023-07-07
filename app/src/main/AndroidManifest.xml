@@ -24,5 +24,6 @@
         </activity>
 
         <activity android:name=".AlumnoAlta" />
+        <activity android:name=".Alumno" />
     </application>
 </manifest>
