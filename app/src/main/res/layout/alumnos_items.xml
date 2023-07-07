@@ -32,7 +32,7 @@
                 android:layout_gravity="center"
                 android:paddingLeft="14dp"
                 android:paddingRight="14dp"
-                app:scrCompat="@drawable/a2020030184">
+                app:srcCompat="@drawable/agregar_alumno">
             </ImageView>
 
             <LinearLayout

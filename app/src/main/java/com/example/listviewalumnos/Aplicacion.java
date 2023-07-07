@@ -3,10 +3,12 @@ package com.example.listviewalumnos;
 import android.app.Application;
 import android.util.Log;
 
+import java.util.AbstractCollection;
 import java.util.ArrayList;
 
 public class Aplicacion extends Application {
-    private ArrayList<Alumno> alumnos;
+    public static ArrayList<Alumno> alumnos;
+
     private MiAdaptador adaptador;
 
     public ArrayList<Alumno> getAlumnos(){ return alumnos; }

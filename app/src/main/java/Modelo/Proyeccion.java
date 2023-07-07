@@ -1,13 +1,12 @@
 package Modelo;
 
 import android.database.Cursor;
+import com.example.listviewalumnos.Alumno;
 
 import java.util.ArrayList;
 
 public interface Proyeccion {
-
-    public AlumnoItem getAlumno(String matricula);
-    public ArrayList<AlumnoItem> allAlumnos();
-    public AlumnoItem readAlumno(Cursor cursor);
-
+    Alumno getAlumno(String matricula);
+    ArrayList<Alumno> allAlumnos();
+    Alumno readAlumno(Cursor cursor);
 }

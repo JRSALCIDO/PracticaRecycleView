@@ -1,9 +1,11 @@
 package Modelo;
 
+import com.example.listviewalumnos.Alumno;
+
 public interface Persistencia {
-    public void openDataBase();
-    public void closeDataBase();
-    public long insertAlumno(AlumnoItem alumno);
-    public long updateAlumno(AlumnoItem alumno);
-    public long deleteAlumno(int id);
+    void openDataBase();
+    void closeDataBase();
+    long insertAlumno(Alumno alumno);
+    long updateAlumno(Alumno alumno);
+    long deleteAlumno(int id);
 }

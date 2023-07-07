@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -23,17 +24,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/recId">
-
         </androidx.recyclerview.widget.RecyclerView>
 
-        <SearchView
-            android:id="@+id/searchView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <ListView
-            android:id="@+id/listView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
     </LinearLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/cardview_light_background"
+            android:elevation="3dp"
+            app:borderWidth="2dp"
+
+            android:src="@drawable/agregar_alumno"
+            android:id="@+id/agregarAlumno">
+
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

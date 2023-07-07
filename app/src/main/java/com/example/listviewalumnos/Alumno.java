@@ -1,16 +1,24 @@
 package com.example.listviewalumnos;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class Alumno {
+public class Alumno  implements Serializable {
+
+    private int id;
     private String carrera;
     private String nombre;
-    private int img;
+    private Integer img;
     private String matricula;
 
-    public Alumno(String carrera, String nombre, int img, String matricula){
+
+    public Alumno(){
+
+    }
+
+    public Alumno(String carrera, String nombre, Integer img, String matricula){
         this.carrera = carrera;
         this.nombre = nombre;
         this.img = img;
@@ -24,8 +32,16 @@ public class Alumno {
 
     public void setGrado(String grado){this.carrera = grado; }
     public void setNombre(String nombre){this.nombre = nombre; }
-    public void setImg(int img){this.img = img; }
+    public void setImg(Integer img){this.img = img; }
     public void setMatricula(String matricula){this.matricula = matricula; }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 
     public static ArrayList<Alumno> llenarAlumnos(){
         ArrayList<Alumno> alumnos = new ArrayList<>();
