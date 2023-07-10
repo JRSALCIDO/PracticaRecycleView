@@ -1,33 +1,29 @@
 package Modelo;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.listviewalumnos.Alumno;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class AlumnoDbHelper extends SQLiteOpenHelper {
 
-    private static final String TEXT_TYPE = "TEXT";
-    private static final String INTIGER_TYPE = "INTIGER";
-    private static final String COMMA_SEP = ",";
+    private static final String TEXT_TYPE = " TEXT";
+    private static final String INTIGER_TYPE = " INTEGER";
+    private static final String COMMA_SEP = " ,";
 
-    private static final String SQL_CREATE_ALUMNO = " CREATE TABLE " +
+    private static final String SQL_CREATE_ALUMNO = "CREATE TABLE " +
             DefineTabla.Alumnos.TABLE_NAME + " (" +
-            DefineTabla.Alumnos.COLUMN_NAME_ID + "INTIGER PRIMARY KEY, " +
-            DefineTabla.Alumnos.TABLE_NAME + TEXT_TYPE + COMMA_SEP +
-            DefineTabla.Alumnos.COLUMN_NAME_MATRICULA + TEXT_TYPE + COMMA_SEP +
-            DefineTabla.Alumnos.COLUMN_NAME_FOTO + INTIGER_TYPE + ");";
+            DefineTabla.Alumnos.COLUMN_TABLE_ID + " INTEGER PRIMARY KEY, " +
+            DefineTabla.Alumnos.COLUMN_TABLE_MATRICULA+TEXT_TYPE+ COMMA_SEP+
+            DefineTabla.Alumnos.COLUMN_TABLE_NOMBRE+TEXT_TYPE +COMMA_SEP+
+            DefineTabla.Alumnos.COLUMN_TABLE_CARRERA+TEXT_TYPE+COMMA_SEP+
+            DefineTabla.Alumnos.COLUMN_TABLE_FOTO+INTIGER_TYPE+ ")";
+
+
 
     private static final String SQL_DELETE_ALUMNO = " DROP TABLE IF EXISTS " +
             DefineTabla.Alumnos.TABLE_NAME;
 
-    private static final String DATABASE_NAME = "sistema.db";
+    private static final String DATABASE_NAME = "alumnos.db";
     private static final int DATABASE_VERCION = 1;
 
     public AlumnoDbHelper(Context context) {

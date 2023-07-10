@@ -54,7 +54,7 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.ViewHolder> im
 
     public void setOnClickListener(View.OnClickListener listener){
         this.listener = listener;
-    }
+     }
 
 
 

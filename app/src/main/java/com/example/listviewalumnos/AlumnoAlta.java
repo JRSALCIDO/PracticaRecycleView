@@ -24,6 +24,7 @@ import androidx.core.content.ContextCompat;
 
 import Modelo.AlumnosDb;
 
+
 public class AlumnoAlta extends AppCompatActivity {
 
     private static final int REQUEST_SELECT_IMAGE = 1;
@@ -164,7 +165,7 @@ public class AlumnoAlta extends AppCompatActivity {
     }
 
     private void openGallery() {
-        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_SELECT_IMAGE);
         } else {
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -194,8 +195,7 @@ public class AlumnoAlta extends AppCompatActivity {
             imgAlumno.setImageURI(selectedImageUri);
 
             // Obtener el recurso de imagen correspondiente al recurso seleccionado de la galería
-            selectedImageResource = R.drawable.agregar_alumno;
+            selectedImageResource = R.drawable.agregar_alumno; // Reemplaza esto con el recurso correcto que deseas asignar
         }
     }
 }
-

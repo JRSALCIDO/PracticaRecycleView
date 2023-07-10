@@ -13,6 +13,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class AdapterAlumno extends ArrayAdapter<AlumnoItem> implements Filterable {
     private Context context;
     private List<AlumnoItem> originalList;
@@ -105,3 +107,6 @@ public class AdapterAlumno extends ArrayAdapter<AlumnoItem> implements Filterabl
         TextView txtMatricula;
     }
 }
+
+
+

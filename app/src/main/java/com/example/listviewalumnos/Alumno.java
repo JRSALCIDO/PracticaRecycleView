@@ -3,9 +3,8 @@ package com.example.listviewalumnos;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Calendar;
 
-public class Alumno  implements Serializable {
+public class Alumno implements Serializable {
     private int id;
     private String carrera;
     private String nombre;
@@ -75,7 +74,6 @@ public class Alumno  implements Serializable {
         alumnos.add(new Alumno(carrera,"BARRON VARGAS JOSE ALBERTO", R.drawable.a2020030808, "2020030808"));
         alumnos.add(new Alumno(carrera,"MARTIN IBARRA GIANCARLO", R.drawable.a2020030819, "2020030819"));
         alumnos.add(new Alumno(carrera,"SANCHEZ OCEGUEDA LUIS ANGEL", R.drawable.a2020030865, "2020030865"));
-
 
         return alumnos;
     }

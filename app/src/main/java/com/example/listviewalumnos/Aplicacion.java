@@ -5,7 +5,6 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-import Modelo.AlumnoDbHelper;
 import Modelo.AlumnosDb;
 
 public class Aplicacion extends Application {
@@ -36,7 +35,7 @@ public class Aplicacion extends Application {
 
 
         alumnosDb= new AlumnosDb(getApplicationContext());
-        // alumnos =Alumno.llenarAlumnos();
+       // alumnos =Alumno.llenarAlumnos();
         alumnos = alumnosDb.allAlumnos();
         alumnosDb.openDataBase();
 
@@ -44,3 +43,5 @@ public class Aplicacion extends Application {
         Log.d("", "onCreate: tamaño array list" + alumnos.size());
     }
 }
+
+

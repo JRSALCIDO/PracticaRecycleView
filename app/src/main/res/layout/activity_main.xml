@@ -17,8 +17,23 @@
             android:text="Listado de Alumnos"
             android:layout_gravity="center"
             android:textAlignment="center"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="20dp"
+            android:textSize="25dp"
+            android:paddingBottom="15dp">
         </TextView>
+
+        <SearchView
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:iconifiedByDefault="false"
+            app:queryHint="Buscar alumno"
+            app:queryBackground="@android:color/transparent"
+            app:submitBackground="@android:color/transparent">
+        </SearchView>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recId"
