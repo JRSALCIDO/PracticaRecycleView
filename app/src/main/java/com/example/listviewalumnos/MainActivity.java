@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private FloatingActionButton fbtnAgregar;
     private Aplicacion app;
+    private SearchView searchView;
 
     private Alumno alumno;
     private int posicion = -1;
@@ -25,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Aplicacion app = (Aplicacion) getApplication();
+        app = (Aplicacion) getApplication();
         recyclerView = (RecyclerView) findViewById(R.id.recId);
         recyclerView.setAdapter(app.getAdaptor());
 
@@ -33,6 +35,21 @@ public class MainActivity extends AppCompatActivity {
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+
+        // Aquí es donde se agrega el código para el SearchView
+        searchView = findViewById(R.id.search);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                app.getAdaptor().filter(newText);
+                return false;
+            }
+        });
 
         fbtnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, 0);
             }
         });
-
 
         app.getAdaptor().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, 1);
             }
         });
+
+
+
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent){

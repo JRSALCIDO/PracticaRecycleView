@@ -22,17 +22,16 @@
             android:paddingBottom="15dp">
         </TextView>
 
-        <SearchView
+        <androidx.appcompat.widget.SearchView
             android:id="@+id/search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:iconifiedByDefault="false"
             app:queryHint="Buscar alumno"
             app:queryBackground="@android:color/transparent"
             app:submitBackground="@android:color/transparent">
-        </SearchView>
+        </androidx.appcompat.widget.SearchView>
 
 
         <androidx.recyclerview.widget.RecyclerView
