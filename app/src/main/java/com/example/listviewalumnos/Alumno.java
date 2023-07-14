@@ -6,20 +6,21 @@ import java.util.ArrayList;
 
 public class Alumno implements Serializable {
     private int id;
-    private String carrera;
-    private String nombre;
-    private Integer img;
     private String matricula;
+    private String nombre;
+    private String carrera;
+    private String grado;
+    private String img;
 
     public Alumno(){
         this.carrera = "";
         this.nombre = "";
-        this.img = 0;
+        this.img = "";
         this.matricula = "";
 
     }
 
-    public Alumno(String carrera, String nombre, Integer img, String matricula){
+    public Alumno(String carrera, String nombre, String img, String matricula){
         this.carrera = carrera;
         this.nombre = nombre;
         this.img = img;
@@ -29,16 +30,16 @@ public class Alumno implements Serializable {
     public int getId(){ return id; }
     public String getGrado(){ return carrera; }
     public String getNombre(){ return nombre; }
-    public int getImg(){ return img; }
+    public String getImg(){ return img; }
     public String getMatricula(){ return matricula; }
     public void setId(int id){this.id = id;}
 
     public void setGrado(String grado){this.carrera = grado; }
     public void setNombre(String nombre){this.nombre = nombre; }
-    public void setImg(Integer img){this.img = img;}
+    public void setImg(String img){this.img = img;}
     public void setMatricula(String matricula){this.matricula = matricula; }
 
-    public static ArrayList<Alumno> llenarAlumnos(){
+    /*public static ArrayList<Alumno> llenarAlumnos(){
         ArrayList<Alumno> alumnos = new ArrayList<>();
         String carrera = "Ing. Tec. Información";
 
@@ -76,7 +77,7 @@ public class Alumno implements Serializable {
         alumnos.add(new Alumno(carrera,"SANCHEZ OCEGUEDA LUIS ANGEL", R.drawable.a2020030865, "2020030865"));
 
         return alumnos;
-    }
+    }*/
 
 
 

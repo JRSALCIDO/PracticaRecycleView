@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -37,7 +38,7 @@ public class AlumnoAlta extends AppCompatActivity {
     private int posicion;
 
     private AlumnosDb alumnosDba;
-    private int selectedImageResource;
+    private String selectedImagePath = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +63,8 @@ public class AlumnoAlta extends AppCompatActivity {
             txtMatricula.setText(alumno.getMatricula());
             txtNombre.setText(alumno.getNombre());
             txtGrado.setText(alumno.getGrado());
-            imgAlumno.setImageResource(alumno.getImg());
+            imgAlumno.setImageURI(Uri.parse(alumno.getImg()));
+            selectedImagePath = alumno.getImg();
         }
 
         imgAlumno.setOnClickListener(new View.OnClickListener() {
@@ -80,15 +82,10 @@ public class AlumnoAlta extends AppCompatActivity {
                     alumno.setGrado(txtGrado.getText().toString());
                     alumno.setMatricula(txtMatricula.getText().toString());
                     alumno.setNombre(txtNombre.getText().toString());
+                    alumno.setImg(selectedImagePath);
 
                     if (validar()) {
                         AlumnosDb alumnosDb = new AlumnosDb(getApplicationContext());
-
-                        if (selectedImageResource != 0) {
-                            alumno.setImg(selectedImageResource);
-                            Toast.makeText(getApplicationContext(), selectedImageResource, Toast.LENGTH_SHORT).show();
-                        }
-
                         Aplicacion.alumnos.add(alumno);
                         alumnosDb.insertAlumno(alumno);
 
@@ -104,10 +101,11 @@ public class AlumnoAlta extends AppCompatActivity {
                     alumno.setMatricula(txtMatricula.getText().toString());
                     alumno.setNombre(txtNombre.getText().toString());
                     alumno.setGrado(txtGrado.getText().toString());
-                    lblImagen.setText(alumno.getImg());
+                    alumno.setImg(selectedImagePath);
                     Aplicacion.alumnos.get(posicion).setMatricula(alumno.getMatricula());
                     Aplicacion.alumnos.get(posicion).setNombre(alumno.getNombre());
                     Aplicacion.alumnos.get(posicion).setGrado(alumno.getGrado());
+                    Aplicacion.alumnos.get(posicion).setImg(selectedImagePath);
 
                     AlumnosDb alumnosDba = new AlumnosDb(getApplicationContext());
                     alumnosDba.updateALumno(alumno);
@@ -194,8 +192,20 @@ public class AlumnoAlta extends AppCompatActivity {
             Uri selectedImageUri = data.getData();
             imgAlumno.setImageURI(selectedImageUri);
 
-            // Obtener el recurso de imagen correspondiente al recurso seleccionado de la galería
-            selectedImageResource = R.drawable.agregar_alumno; // Reemplaza esto con el recurso correcto que deseas asignar
+            // Obtener la ruta de la imagen
+            selectedImagePath = getPathFromURI(selectedImageUri);
         }
+    }
+
+    public String getPathFromURI(Uri contentUri) {
+        String res = null;
+        String[] proj = { MediaStore.Images.Media.DATA };
+        Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
+        if(cursor != null && cursor.moveToFirst()){
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            res = cursor.getString(column_index);
+            cursor.close();
+        }
+        return res;
     }
 }
