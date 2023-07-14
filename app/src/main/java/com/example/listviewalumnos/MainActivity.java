@@ -1,9 +1,11 @@
 package com.example.listviewalumnos;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +16,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+
+    private FloatingActionButton fabClose;
     private RecyclerView.LayoutManager layoutManager;
     private FloatingActionButton fbtnAgregar;
     private Aplicacion app;
@@ -48,6 +52,13 @@ public class MainActivity extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
                 app.getAdaptor().filter(newText);
                 return false;
+            }
+        });
+        fabClose = findViewById(R.id.fab_close);
+        fabClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showConfirmDialog();
             }
         });
 
@@ -91,5 +102,21 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.getAdapter().notifyDataSetChanged();
         posicion = -1;
+    }
+
+
+
+    private void showConfirmDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Cerrar aplicación")
+                .setMessage("¿Estás seguro que deseas salir?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                })
+                .setNegativeButton(android.R.string.no, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 }
